@@ -1,0 +1,11 @@
+# Evolution from the initial MATLAB prototype
+
+The nine MATLAB files in `input/original_matlab/` represent our group's initial prototype. The Python implementation in `src/` refines the prototype's comparison policies, 80 MHz channel decomposition, parameter sweeps, fixed seeds, and airtime accounting:
+
+1. **Standard-compliant mask catalogue**: The prototype's eight-mask list mixed primary-punctured and two-hole patterns. The Python simulation restricts the 80 MHz non-OFDMA set to `{1111, 1011, 1101, 1110}` alongside the separate 20 MHz primary fallback `1000`, sharing immediate primary CCA across all policies.
+2. **Stationary Markov occupancy and exact age discounting**: Instead of redrawing busy subchannels independently each slot with heuristic error constants, `src/models/channel.py` generates stationary two-state Markov chains parameterized by `(d, rho)` and applies the exact multi-step conditional clear probability `q(a | b) = 1 - d + (d - b) * rho^a`, alongside a mismatched-`rho` robustness test.
+3. **Consistent airtime-fraction expected goodput**: Rather than subtracting raw signalling slots from MHz bandwidth, `AgeAware` evaluates expected delivered Mbps over a fixed `T = 1 ms` frame, deducting primary CCA, scheduled probing, common signalling, the 60 MHz puncture premium (only when `sum(m) == 3`), per-frame computation, and a one-switch scoring allowance.
+4. **Synchronized wall-clock frames**: Deducting control overhead inside fixed 1 ms frames ensures all four policies experience identical physical interference trajectories on every shared seed.
+5. **Spectral recovery metrics**: Both structural unused clear bandwidth (MHz) and effective unrecovered clear bandwidth (charging control overhead and collision losses) are tracked alongside goodput.
+6. **Completed-service waiting**: Service waiting counts consecutive deferred or failed frames preceding each successful transmission (retaining zero-wait cycles and recording the right-censored tail separately).
+7. **Run-level Student-t inference**: Confidence intervals use the two-sided 95% Student-t distribution across the ten independent seeds (`df = 9`), with paired within-seed differences for policy comparisons.

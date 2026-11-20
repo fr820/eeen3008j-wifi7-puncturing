@@ -1,0 +1,4 @@
+.....................                                                    [100%]
+21 passed in 0.50s
+22 scenarios, 880 policy runs, 220 shared traces
+Completed. Open results/index.html to view the figures and data.

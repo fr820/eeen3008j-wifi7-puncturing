@@ -1,0 +1,25 @@
+{
+  "concept_puncturing": {
+    "figure": "Figure 1",
+    "basis": "Adapted from [11]",
+    "description": "80 MHz channel with single secondary 20 MHz puncture (mask 1101)"
+  },
+  "concept_system_topology": {
+    "figure": "Figure 2",
+    "basis": "Adapted from [12]",
+    "description": "Saturated AP-to-STA link topology and per-frame scheduling pipeline"
+  },
+  "concept_allowed_masks": {
+    "figure": "Figure 3",
+    "basis": "Mask subset from [9,10], layout from [11]",
+    "description": "Four 80 MHz non-OFDMA patterns plus 20 MHz primary fallback"
+  },
+  "concept_airtime_budget": {
+    "figure": "Figure 4",
+    "description": "1 ms frame airtime breakdown (0.075 ms control overhead, 0.925 ms payload)"
+  },
+  "concept_stale_measurement": {
+    "figure": "Figure 9",
+    "description": "Decision comparison at probe age a=2 frames (d=0.6, rho=0.2)"
+  }
+}

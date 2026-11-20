@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Group 18 Wi-Fi 7 Simulation Results</title>
+<style>
+body { margin: 28px auto; max-width: 1040px; padding: 0 20px;
+  font: 16px/1.55 system-ui, sans-serif; color: #183044; background: #f8fafc; }
+h1, h2 { line-height: 1.2; } a { color: #075487; }
+table { border-collapse: collapse; width: 100%; background: white; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid #cbd7e2; }
+thead { background: #e5eef6; }
+figure { margin: 20px 0; padding: 12px; background: white; border: 1px solid #cbd7e2; }
+figcaption { font-weight: 600; } img { display: block; width: 100%; height: auto; }
+</style>
+</head>
+<body><main>
+<h1>Wi-Fi 7 Puncturing Simulation Results</h1>
+<p>EEEN3008J, Group 18, Topic 02</p>
+<p>Completed 22 experiment settings, 220 shared interference traces and 880 policy runs.</p>
+<h2>Goodput in two representative settings</h2>
+<p>Mean ± half-width of the 95% confidence interval, in Mbps.</p>
+<table>
+<thead><tr><th scope="col">Policy</th><th scope="col">Main sweep<br>K = 2, duty cycle = 0.3</th>
+<th scope="col">Rapidly changing interference<br>Occupancy correlation = 0.2, 25 ms probe interval</th></tr></thead>
+<tbody><tr><th scope="row">Wait80</th><td>133.23 ± 2.80</td><td>2.02 ± 0.15</td></tr>
+<tr><th scope="row">Fixed20</th><td>75.20 ± 0.00</td><td>75.84 ± 0.00</td></tr>
+<tr><th scope="row">Greedy</th><td>226.68 ± 1.11</td><td>63.62 ± 0.35</td></tr>
+<tr><th scope="row">AgeAware</th><td>225.46 ± 1.11</td><td>77.50 ± 0.05</td></tr></tbody>
+</table>
+<p>In the 25 ms case, the paired goodput difference for AgeAware versus Greedy is <strong>13.88 ± 0.40 Mbps</strong>. The difference is 21.81% relative to Greedy’s mean.</p>
+<p><a href="summary.csv">Full summary</a> | <a href="paired_comparisons.csv">Paired comparisons</a> |
+<a href="raw_data/runs.csv">Run-level data</a> | <a href="raw_data/trace_manifest.csv">Trace manifest</a> |
+<a href="environment.json">Run environment</a> | <a href="data_sha256.json">Data checksums</a></p>
+<h2>Performance figures</h2>
+<figure><figcaption>Goodput across interference settings</figcaption><img src="figures/figure_1_goodput.png" alt="Goodput across interference settings" loading="lazy"></figure>
+<figure><figcaption>Sensitivity to the secondary measurement interval</figcaption><img src="figures/figure_4_staleness.png" alt="Sensitivity to the secondary measurement interval" loading="lazy"></figure>
+<figure><figcaption>95th-percentile service waiting time</figcaption><img src="figures/figure_2_wait.png" alt="95th-percentile service waiting time" loading="lazy"></figure>
+<figure><figcaption>Unused clear bandwidth</figcaption><img src="figures/figure_3_unused.png" alt="Unused clear bandwidth" loading="lazy"></figure>
+<figure><figcaption>Stress cases and model sensitivity</figcaption><img src="figures/figure_5_stress.png" alt="Stress cases and model sensitivity" loading="lazy"></figure>
+</main></body></html>
